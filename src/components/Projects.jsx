@@ -1,73 +1,84 @@
-import React from 'react';
-import './Projects.css';
-import ivyImage from '../assets/images/ivy.png';
-import targetsImage from '../assets/images/targets.png';
-import iphoneImage from '../assets/images/iphone.png';
-import tdcImage from '../assets/images/tdc.png';
-import feelwiseImage from '../assets/images/feelwise.png';
-import prodmastImage from '../assets/images/prodmast.png';
-import zenpayImage from '../assets/images/zenpay.png';
+import React from "react";
+import "./Projects.css";
+import ivyImage from "../assets/images/ivy.png";
+import targetsImage from "../assets/images/targets.png";
+import iphoneImage from "../assets/images/iphone.png";
+import tdcImage from "../assets/images/tdc.png";
+import feelwiseImage from "../assets/images/feelwise.png";
+import prodmastImage from "../assets/images/prodmast.png";
+import zenpayImage from "../assets/images/zenpay.png";
 
 const Projects = () => {
   const projectsData = [
     {
       id: 1,
-      name: 'Ivy Interactive Solutions',
-      description: 'A modern, interactive website built for Ivy Interactive Solutions, featuring dynamic elements and responsive design.',
-      tags: ['React', 'CSS', 'JavaScript'],
+      name: "Ivy Interactive Solutions",
+      description:
+        "A modern, interactive website built for Ivy Interactive Solutions, featuring dynamic elements and responsive design.",
+      tags: ["React", "CSS", "JavaScript"],
       image: ivyImage,
-      liveLink: 'https://ivy-interactive.vercel.app/',
+      liveLink: "https://ivy-interactive.vercel.app/",
     },
     {
       id: 2,
-      name: 'Targets Live',
-      description: 'A live tracking and management website for Targets, integrating real-time data updates and streamlined user flows.',
-      tags: ['HTML', 'Bootstrap', 'JS'],
+      name: "Targets Live",
+      description:
+        "A live tracking and management website for Targets, integrating real-time data updates and streamlined user flows.",
+      tags: ["HTML", "Bootstrap", "JS"],
       image: targetsImage,
-      liveLink: 'https://ivy-qmws.vercel.app/',
+      liveLink: "https://ivy-qmws.vercel.app/",
     },
     {
       id: 3,
-      name: 'iPhone Landing Page Clone',
-      description: 'A pixel-perfect clone of the Apple iPhone landing page, focusing on sleek animations and completely responsive styling.',
-      tags: ['HTML5', 'CSS3'],
+      name: "iPhone Landing Page Clone",
+      description:
+        "A pixel-perfect clone of the Apple iPhone landing page, focusing on sleek animations and completely responsive styling.",
+      tags: ["HTML5", "CSS3"],
       image: iphoneImage,
+      liveLink: "https://iphone-landing-page-some-sections-f.vercel.app/",
     },
     {
       id: 4,
-      name: 'Diabetes Center',
-      description: 'A comprehensive landing page for a Diabetes Center, built with a mobile-first approach for healthcare accessibility.',
-      tags: ['Bootstrap', 'HTML', 'CSS'],
+      name: "Diabetes Center",
+      description:
+        "A comprehensive landing page for a Diabetes Center, built with a mobile-first approach for healthcare accessibility.",
+      tags: ["Bootstrap", "HTML", "CSS"],
       image: tdcImage,
+      liveLink: "https://tdc-tyu1.vercel.app/",
     },
     {
       id: 5,
-      name: 'Feel Wise',
-      description: 'A full-stack mental wellness application with a robust frontend and scalable data storage for user tracking.',
-      tags: ['HTML', 'CSS', 'JavaScript', 'MongoDB'],
+      name: "Feel Wise",
+      description:
+        "A full-stack mental wellness application with a robust frontend and scalable data storage for user tracking.",
+      tags: ["HTML", "CSS", "JavaScript", "MongoDB"],
       image: feelwiseImage,
     },
     {
       id: 6,
-      name: 'Prodmast Dribbble Clone',
-      description: 'A pixel-perfect UI clone of the Prodmas R Dribbble design, featuring a clean, responsive layout and modern aesthetics.',
-      tags: ['HTML5', 'CSS3', 'UI/UX'],
+      name: "Prodmast Dribbble Clone",
+      description:
+        "A pixel-perfect UI clone of the Prodmas R Dribbble design, featuring a clean, responsive layout and modern aesthetics.",
+      tags: ["HTML5", "CSS3", "UI/UX"],
       image: prodmastImage,
+      liveLink: "https://peodmast.vercel.app/",
     },
     {
       id: 7,
-      name: 'Zenpay Dribbble Clone',
-      description: 'A high-fidelity frontend translation of the Zenpay Dribbble template, focusing on interactive elements and sleek styling.',
-      tags: ['HTML5', 'CSS3', 'UI/UX'],
+      name: "Zenpay Dribbble Clone",
+      description:
+        "A high-fidelity frontend translation of the Zenpay Dribbble template, focusing on interactive elements and sleek styling.",
+      tags: ["HTML5", "CSS3", "UI/UX"],
       image: zenpayImage,
-    }
+      liveLink: "https://zenpay-lovat.vercel.app/",
+    },
   ];
 
   return (
     <section id="projects" className="section projects-section">
       <div className="container">
         <h2 className="section-title">Selected Works</h2>
-        
+
         <div className="projects-grid">
           {projectsData.map((project) => (
             <div key={project.id} className="project-card">
@@ -86,16 +97,27 @@ const Projects = () => {
                     </div>
                   ))}
                 </div>
-                <a href={project.liveLink || "#"} target={project.liveLink ? "_blank" : undefined} rel={project.liveLink ? "noopener noreferrer" : undefined} className="reserve-btn">
-                  View Project
-                </a>
+                {project.liveLink ? (
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="reserve-btn"
+                  >
+                    View Project
+                  </a>
+                ) : (
+                  <span className="reserve-btn disabled">View Project</span>
+                )}
               </div>
             </div>
           ))}
         </div>
-        
+
         <div className="projects-cta">
-          <a href="#" className="btn btn-outline">View Complete Archive</a>
+          <a href="#" className="btn btn-outline">
+            View Complete Archive
+          </a>
         </div>
       </div>
     </section>
