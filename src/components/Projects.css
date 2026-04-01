@@ -1,0 +1,154 @@
+.projects-section {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.project-card {
+  position: relative;
+  height: 480px;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+
+/* Background Image & Gradient overlay */
+.card-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.card-bg-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.6s ease;
+}
+
+.project-card:hover .card-bg-image img {
+  transform: scale(1.05);
+}
+
+.bg-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0) 0%, 
+    rgba(0, 0, 0, 0.2) 20%, 
+    rgba(0, 0, 0, 0.8) 60%, 
+    rgba(0, 0, 0, 1) 100%);
+  z-index: 1;
+}
+
+/* Card Content container */
+.card-content {
+  position: relative;
+  z-index: 2;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Typography & Colors */
+.card-title {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.card-desc {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Tags / Pills */
+.card-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.tag-pill {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tag-icon {
+  font-size: 0.9rem;
+}
+
+/* Call to Action Button */
+.reserve-btn {
+  background: #ffffff;
+  color: #1a1a1a;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 14px 20px;
+  border-radius: 30px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  transition: transform 0.2s, background 0.2s;
+  margin-top: 8px;
+}
+
+.reserve-btn:hover {
+  background: #f8f8f8;
+  transform: scale(1.02);
+}
+
+.projects-cta {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
