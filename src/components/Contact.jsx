@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import emailjs from "@emailjs/browser";
 import "./Contact.css";
 
 const Contact = () => {
@@ -9,6 +8,8 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  const [status, setStatus] = useState(null); // null, 'sending', 'success', 'error'
+  const [statusText, setStatusText] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,26 +19,52 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setStatus("sending");
+    setStatusText("Sending your message...");
 
-    emailjs
-      .sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        formRef.current,
-        "YOUR_PUBLIC_KEY",
-      )
-      .then(
-        () => {
-          alert("Message sent successfully!");
-          setFormData({ name: "", email: "", message: "" });
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+    if (!accessKey || accessKey === "YOUR_ACCESS_KEY_HERE") {
+      setStatus("error");
+      setStatusText("Please configure your Web3Forms Access Key in the .env file.");
+      return;
+    }
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        (error) => {
-          console.error("EmailJS error:", error);
-          alert("Failed to send message. Please try again later.");
-        },
-      );
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `New Contact Form Submission from ${formData.name}`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus("success");
+        setStatusText("Message sent successfully! I'll get back to you soon.");
+        setFormData({ name: "", email: "", message: "" });
+        // Clear success message after 5 seconds
+        setTimeout(() => setStatus(null), 5000);
+      } else {
+        setStatus("error");
+        setStatusText(result.message || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      setStatus("error");
+      setStatusText("Failed to send message. Please check your connection.");
+    }
   };
 
   return (
@@ -132,9 +159,25 @@ const Contact = () => {
                 required
               ></textarea>
             </div>
-            <button type="submit" className="btn btn-primary btn-submit">
-              Send Message
+            <button 
+              type="submit" 
+              className={`btn btn-primary btn-submit ${status === "sending" ? "loading" : ""}`}
+              disabled={status === "sending"}
+            >
+              {status === "sending" ? (
+                <>
+                  <span className="spinner"></span>
+                  Sending...
+                </>
+              ) : "Send Message"}
             </button>
+
+            {status && status !== "sending" && (
+              <div className={`status-message ${status}`}>
+                {status === "success" ? "✓ " : "✕ "}
+                {statusText}
+              </div>
+            )}
           </form>
         </div>
       </div>
