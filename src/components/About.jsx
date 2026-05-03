@@ -59,22 +59,23 @@ const About = () => {
           <div className="mac-browser-content">
             <div className="about-content">
               <div className="about-text">
-            <p style={{ minHeight: '110px' }}>
-              <TypewriterText 
-                text="I am a Software Developer specialized in creating beautiful and interactive digital experiences. My journey started with a curiosity about how things work on the web, which eventually grew into a deep passion for frontend development, UI/UX design, and architecting scalable backend systems." 
-                delay={15}
-                onComplete={() => setShowSecondPara(true)}
-              />
-            </p>
-            <p style={{ minHeight: '80px' }}>
-              {showSecondPara && (
-                <TypewriterText 
-                  text="When I'm not coding, you can find me exploring new technologies, writing tech blogs, or enjoying a good book. I focus heavily on writing clean, maintainable, and highly efficient code." 
-                  delay={15}
-                  onComplete={() => setShowElements(true)}
-                />
-              )}
-            </p>
+                <p style={{ minHeight: '110px' }}>
+                  <TypewriterText 
+                    text="I am a Software Engineer dedicated to architecting high-impact digital solutions. With a focus on performance and user-centric design, I build seamless applications that bridge the gap between complex logic and elegant interfaces." 
+                    delay={15}
+                    onComplete={() => setShowSecondPara(true)}
+                  />
+                </p>
+                <p style={{ minHeight: '80px' }}>
+                  {showSecondPara && (
+                    <TypewriterText 
+                      text="My approach combines technical rigor with creative problem-solving. I am committed to writing clean, scalable code and continuously exploring emerging technologies to deliver state-of-the-art results." 
+                      delay={15}
+                      onComplete={() => setShowElements(true)}
+                    />
+                  )}
+                </p>
+
             
             <div className={`stats-grid ${showElements ? 'fade-in' : 'hidden'}`}>
               <div className="stat">

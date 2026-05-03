@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --bg-color: #030014; /* Deep, professional dark */
+  --bg-color: #030014;
   --surface-color: rgba(255, 255, 255, 0.03);
-  --border-color: rgba(255, 255, 255, 0.08); /* More subtle */
+  --border-color: rgba(255, 255, 255, 0.08);
   --text-primary: #f8fafc;
-  --text-secondary: #94a3b8; /* Slate gray */
-  --accent-color: #6366f1; /* Professional Indigo */
+  --text-secondary: #94a3b8;
+  --accent-color: #6366f1;
   --accent-glow: rgba(99, 102, 241, 0.2);
   --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
   --gradient-text: linear-gradient(to right, #ffffff, #94a3b8);
@@ -19,6 +19,8 @@
   --glass-bg: rgba(255, 255, 255, 0.02);
   --glass-border: rgba(255, 255, 255, 0.05);
 }
+
+
 
 * {
   margin: 0;
@@ -33,12 +35,68 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--bg-color);
+  background-color: #020010;
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   position: relative;
+  min-height: 100vh;
+}
+
+/* Animated Mesh Gradient Background */
+.bg-gradient-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  background: #020010;
+}
+
+.gradient-blob {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+  mix-blend-mode: screen;
+  animation: move 25s infinite alternate;
+}
+
+.blob-1 {
+  background: #4f46e5;
+  top: -10%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.blob-2 {
+  background: #06b6d4;
+  bottom: -10%;
+  right: -10%;
+  animation-duration: 30s;
+  animation-delay: -5s;
+}
+
+.blob-3 {
+  background: #7c3aed;
+  top: 40%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  animation-duration: 35s;
+  animation-delay: -10s;
+}
+
+@keyframes move {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  33% { transform: translate(10vw, 20vh) rotate(120deg) scale(1.2); }
+  66% { transform: translate(-10vw, 10vh) rotate(240deg) scale(0.8); }
+  100% { transform: translate(0, 0) rotate(360deg) scale(1); }
 }
 
 /* Subtle Noise Texture */

@@ -9,8 +9,12 @@ import Footer from './components/Footer';
 function App() {
   return (
     <>
-      <div className="bg-glow bg-glow-top"></div>
-      <div className="bg-glow bg-glow-bottom"></div>
+      <div className="bg-gradient-container">
+        <div className="gradient-blob blob-1"></div>
+        <div className="gradient-blob blob-2"></div>
+        <div className="gradient-blob blob-3"></div>
+      </div>
+
       
       <Navbar />
       <main>
