@@ -17,7 +17,7 @@ const Projects = () => {
         "A modern, interactive website built for Ivy Interactive Solutions, featuring dynamic elements and responsive design.",
       tags: ["React", "CSS", "JavaScript"],
       image: ivyImage,
-      liveLink: "https://ivy-interactive.vercel.app/",
+      liveLink: "https://ivy-5d6a.vercel.app/",
     },
     {
       id: 2,
